@@ -10,7 +10,7 @@ body {
     animation: fadeInBody 1.2s ease-in-out;
 }
 
-/* MAIN CONTAINER (Flex Parent) */
+/* MAIN CONTAINER */
 .container {
     display: flex;
     justify-content: center;
@@ -22,7 +22,7 @@ body {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
     max-width: 1000px;
     width: 90%;
-    flex-wrap: wrap;
+    min-height: 550px;
     animation: slideUp 1s ease-out;
 }
 
@@ -31,17 +31,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     border-right: 3px solid black;
     flex: 1;
-    min-width: 280px;
-    padding: 20px;
+    padding: 25px;
     background-color: #fff;
     text-align: center;
     animation: fadeInLeft 1.3s ease;
 }
 
-/* PROFILE IMAGE */
 .holder img {
     width: 180px;
     height: 180px;
@@ -57,17 +55,14 @@ body {
     box-shadow: 0 0 20px rgba(47, 79, 79, 0.6);
 }
 
-/* NAME & TITLE */
 .holder h2 {
     font-size: 26px;
     margin: 10px 0 5px 0;
-    animation: fadeIn 1.4s ease;
 }
 
 .holder p {
     font-size: 18px;
     color: #333;
-    animation: fadeIn 1.6s ease;
 }
 
 /* BUTTON STYLE */
@@ -96,7 +91,6 @@ input[type="submit"]:hover {
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
-    animation: fadeInUp 1.5s ease;
 }
 
 .icons {
@@ -120,34 +114,56 @@ input[type="submit"]:hover {
 .qualities {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     background-color: darkslategray;
     color: white;
     flex: 2;
-    min-width: 400px;
-    padding: 30px;
+    padding: 50px 40px;
     animation: fadeInRight 1.3s ease;
+    text-align: center;
 }
 
+/* About Me Heading */
 .paragraph h2 {
     margin-top: 0;
-    font-size: 28px;
-    animation: fadeIn 1.5s ease;
+    font-size: 32px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    animation: fadeIn 1.4s ease;
+    border-bottom: 2px solid #fff;
+    display: inline-block;
+    padding-bottom: 6px;
 }
 
+/* About Me Paragraph */
 .paragraph p {
+    max-width: 700px; /* keeps text nicely contained */
+    margin: 0 auto;
     font-size: 18px;
-    line-height: 1.6;
-    animation: fadeIn 1.7s ease;
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+    text-align: justify;
+    text-justify: inter-word;
+    color: #f0f0f0;
+    padding: 0 10px;
+    animation: fadeInUp 1.8s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* BUTTONS UNDER ABOUT ME */
+.paragraph p:hover {
+    color: #ffffff;
+    transform: scale(1.01);
+}
+
+/* Buttons Under About Me */
 #buttons {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-    animation: fadeInUp 1.6s ease;
+    gap: 20px;
+    margin-top: 35px;
+    animation: fadeInUp 2s ease;
 }
 
 /* ANIMATIONS */
@@ -181,26 +197,40 @@ input[type="submit"]:hover {
     to { opacity: 1; }
 }
 
-/* RESPONSIVE DESIGN (MOBILE-FRIENDLY) */
-@media (max-width: 800px) {
+/* ✅ RESPONSIVE DESIGN FIXED */
+@media (max-width: 900px) {
     .container {
         flex-direction: column;
         width: 95%;
+        max-width: 600px;
+        border-radius: 12px;
     }
 
     .holder {
         border-right: none;
         border-bottom: 3px solid black;
         width: 100%;
+        padding: 25px;
     }
 
     .qualities {
         width: 100%;
-        padding: 20px;
+        padding: 25px 20px;
+    }
+
+    .paragraph h2 {
+        font-size: 26px;
+    }
+
+    .paragraph p {
+        font-size: 16px;
+        line-height: 1.7;
+        padding: 0 5px;
     }
 
     #buttons {
         flex-direction: column;
         align-items: center;
+        gap: 10px;
     }
 }
