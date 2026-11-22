@@ -94,6 +94,17 @@ body::before {
     -webkit-backdrop-filter: blur(22px) saturate(150%);
 }
 
+.featured-label {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    color: #74819a;
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
 .activity-pulse {
     flex: 0 0 auto;
     width: 8px;
@@ -146,14 +157,6 @@ body::before {
 
 .marquee-track a:hover {
     color: #536cff;
-}
-
-.featured-item {
-    color: #74819a !important;
-    font-size: 10px !important;
-    font-weight: 850 !important;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
 }
 
 .quote-item {
@@ -588,6 +591,10 @@ body::before {
     .portfolio-shell {
         width: min(680px, calc(100% - 32px));
         padding: 16px 0 32px;
+    }
+
+    .featured-label {
+        display: none;
     }
 
     .profile-card {
