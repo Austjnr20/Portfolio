@@ -81,10 +81,11 @@ body::before {
 .topbar {
     height: 58px;
     margin-bottom: 12px;
-    padding: 0 18px;
+    padding: 0 8px 0 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
     border: 1px solid var(--line);
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.48);
@@ -93,41 +94,91 @@ body::before {
     -webkit-backdrop-filter: blur(22px) saturate(150%);
 }
 
-.brand {
+.activity-label {
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
-    gap: 10px;
-    color: var(--ink);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 700;
+    gap: 8px;
+    color: #74819a;
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
-.brand-mark {
-    width: 34px;
-    height: 34px;
-    display: grid;
-    place-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    border-radius: 11px;
-    color: white;
-    background: linear-gradient(145deg, #86aaff, #536cff);
-    box-shadow: 0 8px 18px rgba(79, 124, 255, 0.28);
+.activity-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #63c98f;
+    box-shadow: 0 0 0 5px rgba(99, 201, 143, 0.12);
+    animation: pulse 2s ease-out infinite;
 }
 
-.nav-link {
-    color: var(--muted);
+.project-marquee {
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+.marquee-track {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    animation: marquee 18s linear infinite;
+}
+
+.marquee-track a {
+    color: #68758f;
     text-decoration: none;
-    font-size: 14px;
-    font-weight: 650;
-    padding: 9px 14px;
-    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.marquee-track a::after {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    margin: 0 0 3px 28px;
+    border-radius: 50%;
+    background: #9eb2eb;
+}
+
+.marquee-track a:hover {
+    color: #536cff;
+}
+
+.top-github {
+    height: 42px;
+    flex: 0 0 auto;
+    padding: 0 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    border-radius: 14px;
+    color: #56637a;
+    background: rgba(255, 255, 255, 0.68);
+    box-shadow: 0 8px 18px rgba(74, 91, 133, 0.08);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
     transition: 180ms ease;
 }
 
-.nav-link:hover {
-    color: var(--ink);
-    background: rgba(255, 255, 255, 0.66);
+.top-github i:last-child {
+    font-size: 9px;
+}
+
+.top-github:hover {
+    color: #536cff;
+    background: white;
+    transform: translateY(-2px);
 }
 
 .profile-card {
@@ -497,6 +548,16 @@ body::before {
     65%, 100% { left: calc(100% + 70px); }
 }
 
+@keyframes marquee {
+    to { transform: translateX(-50%); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(99, 201, 143, 0.36); }
+    70% { box-shadow: 0 0 0 8px rgba(99, 201, 143, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(99, 201, 143, 0); }
+}
+
 @keyframes enter {
     from {
         opacity: 0;
@@ -537,8 +598,8 @@ body::before {
         font-size: clamp(38px, 9vw, 58px);
     }
 
-    .project-showcase {
-        grid-template-columns: 0.8fr 1.2fr;
+    .activity-label {
+        display: none;
     }
 }
 
@@ -551,7 +612,17 @@ body::before {
         height: 52px;
     }
 
-    .brand > span:last-child {
+    .top-github span {
+        display: none;
+    }
+
+    .top-github {
+        width: 42px;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .top-github i:last-child {
         display: none;
     }
 
@@ -585,18 +656,6 @@ body::before {
         min-height: 72px;
     }
 
-    .project-showcase {
-        grid-template-columns: 1fr;
-    }
-
-    .project-orbit {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    .orbit-label {
-        grid-column: 1 / -1;
-        padding: 2px 4px;
-    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -609,9 +668,13 @@ body::before {
     }
 
     .primary-button,
-    .secondary-button,
     .social-row a,
-    .nav-link {
+    .top-github {
         transition: none;
+    }
+
+    .marquee-track,
+    .activity-pulse {
+        animation: none;
     }
 }
