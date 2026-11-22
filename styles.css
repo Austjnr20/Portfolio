@@ -369,55 +369,132 @@ body::before {
     line-height: 1.3;
 }
 
-.action-row {
+.project-showcase {
     margin-top: 24px;
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(150px, 0.8fr) minmax(280px, 1.2fr);
     gap: 10px;
 }
 
-.secondary-button {
-    height: 48px;
-    min-width: 132px;
-    gap: 9px;
-    border: 1px solid rgba(255, 255, 255, 0.78);
-    border-radius: 15px;
-    color: #536178;
-    background: rgba(255, 255, 255, 0.48);
-    font-size: 13px;
-    font-weight: 750;
-}
-
-.secondary-button i {
-    font-size: 11px;
-}
-
-.work-strip {
-    margin-top: auto;
-    padding-top: 24px;
+.github-button {
+    position: relative;
+    min-height: 74px;
+    padding: 10px 14px;
     display: flex;
     align-items: center;
-    gap: 16px;
-    color: #8993a7;
-    font-size: 11px;
+    gap: 11px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.84);
+    border-radius: 20px;
+    color: #3f4c64;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(220, 232, 255, 0.56));
+    box-shadow: 0 12px 28px rgba(74, 91, 133, 0.12);
+    text-decoration: none;
+    transition: 220ms ease;
 }
 
-.work-strip span {
-    margin-right: auto;
-}
-
-.work-strip strong {
-    color: #66728a;
-    font-weight: 700;
-}
-
-.work-strip strong::before {
+.github-button::after {
     content: "";
-    display: inline-block;
-    width: 4px;
-    height: 4px;
-    margin: 0 7px 2px 0;
-    border-radius: 50%;
-    background: #94a8ed;
+    position: absolute;
+    width: 90px;
+    height: 160%;
+    top: -30%;
+    left: -130px;
+    transform: rotate(18deg);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.82), transparent);
+    animation: sheen 4.5s ease-in-out infinite;
+}
+
+.github-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 34px rgba(74, 91, 133, 0.18);
+}
+
+.github-icon {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    color: white;
+    background: linear-gradient(145deg, #668cff, #536cff);
+    box-shadow: 0 8px 18px rgba(79, 107, 235, 0.24);
+    font-size: 18px;
+}
+
+.github-copy {
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.github-copy small {
+    color: #929db0;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.github-copy strong {
+    margin-top: 2px;
+    font-size: 14px;
+}
+
+.github-arrow {
+    margin-left: auto;
+    color: #7c89a1;
+    font-size: 11px;
+    z-index: 1;
+}
+
+.project-orbit {
+    min-height: 74px;
+    padding: 10px 12px;
+    display: grid;
+    grid-template-columns: auto repeat(3, 1fr);
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.76);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.38);
+}
+
+.orbit-label {
+    margin-right: 3px;
+    color: #929db0;
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.project-orbit a {
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    border-radius: 15px;
+    color: #65718a;
+    background: rgba(255, 255, 255, 0.52);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 800;
+    transition: 180ms ease;
+}
+
+.project-orbit a:hover {
+    color: #536cff;
+    background: white;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(74, 91, 133, 0.12);
+}
+
+@keyframes sheen {
+    0%, 35% { left: -130px; }
+    65%, 100% { left: calc(100% + 70px); }
 }
 
 @keyframes enter {
@@ -460,9 +537,8 @@ body::before {
         font-size: clamp(38px, 9vw, 58px);
     }
 
-    .work-strip {
-        margin-top: 28px;
-        flex-wrap: wrap;
+    .project-showcase {
+        grid-template-columns: 0.8fr 1.2fr;
     }
 }
 
@@ -509,25 +585,17 @@ body::before {
         min-height: 72px;
     }
 
-    .action-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+    .project-showcase {
+        grid-template-columns: 1fr;
     }
 
-    .secondary-button {
-        min-width: 0;
+    .project-orbit {
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
-    .work-strip {
-        gap: 8px 12px;
-    }
-
-    .work-strip span {
-        width: 100%;
-    }
-
-    .work-strip strong {
-        font-size: 10px;
+    .orbit-label {
+        grid-column: 1 / -1;
+        padding: 2px 4px;
     }
 }
 
