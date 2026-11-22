@@ -94,21 +94,12 @@ body::before {
     -webkit-backdrop-filter: blur(22px) saturate(150%);
 }
 
-.activity-label {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #74819a;
-    font-size: 10px;
-    font-weight: 850;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
 .activity-pulse {
+    flex: 0 0 auto;
     width: 8px;
     height: 8px;
+    display: inline-block;
+    margin-right: 8px;
     border-radius: 50%;
     background: #63c98f;
     box-shadow: 0 0 0 5px rgba(99, 201, 143, 0.12);
@@ -127,11 +118,14 @@ body::before {
     width: max-content;
     display: flex;
     align-items: center;
-    gap: 28px;
-    animation: marquee 18s linear infinite;
+    gap: 30px;
+    animation: marquee 22s linear infinite;
 }
 
-.marquee-track a {
+.marquee-track a,
+.marquee-track > span {
+    display: inline-flex;
+    align-items: center;
     color: #68758f;
     text-decoration: none;
     font-size: 12px;
@@ -139,7 +133,8 @@ body::before {
     white-space: nowrap;
 }
 
-.marquee-track a::after {
+.marquee-track a::after,
+.marquee-track > span::after {
     content: "";
     display: inline-block;
     width: 4px;
@@ -151,6 +146,26 @@ body::before {
 
 .marquee-track a:hover {
     color: #536cff;
+}
+
+.featured-item {
+    color: #74819a !important;
+    font-size: 10px !important;
+    font-weight: 850 !important;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.quote-item {
+    color: #536cff !important;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px !important;
+    font-style: italic;
+    font-weight: 700 !important;
+}
+
+.project-marquee:hover .marquee-track {
+    animation-play-state: paused;
 }
 
 .top-github {
